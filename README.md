@@ -1,3 +1,3 @@
 # NETFLIX CLONE
 
-[https://netflix-clone-three-pi.vercel.app/](live_url)
+[Live URL](https://netflix-clone-three-pi.vercel.app/)
