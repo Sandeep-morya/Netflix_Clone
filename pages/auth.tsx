@@ -1,4 +1,5 @@
 ﻿import Input from "@/components/Input";
+import axios from "axios";
 import React, { useCallback, useState } from "react";
 
 type Props = {};
@@ -12,6 +13,19 @@ const Auth = (props: Props) => {
 	const toggleVariant = useCallback(() => {
 		setVariant((variant) => (variant == "Sign in" ? "Register" : "Sign in"));
 	}, []);
+
+	const register = useCallback(async () => {
+		try {
+			const { data } = await axios.post("/api/register", {
+				name,
+				email,
+				password,
+			});
+			console.log(data);
+		} catch (error) {
+			console.log(error);
+		}
+	}, [name, email, password]);
 	return (
 		<div className="relative w-full h-full bg-[url('/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
 			<div className="bg-black h-full w-full lg:bg-opacity-50">
@@ -45,7 +59,9 @@ const Auth = (props: Props) => {
 								onChange={(e) => setPassword(e.target.value)}
 							/>
 						</div>
-						<button className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
+						<button
+							onClick={register}
+							className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition">
 							{variant === "Register" ? "Sign up" : "Login"}
 						</button>
 						<p className="text-neutral-500 mt-12 text-center">
