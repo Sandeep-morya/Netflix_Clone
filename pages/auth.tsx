@@ -51,8 +51,7 @@ const Auth = (props: Props) => {
 						<p className="text-neutral-500 mt-12 text-center">
 							{variant === "Register"
 								? "Already have an account?"
-								: "First time using NetFlix?"}
-							&bnsp;
+								: "First time using NetFlix?"}{" "}
 							<span
 								onClick={toggleVariant}
 								className="text-white ml-1 hover:underline cursor-pointer">
